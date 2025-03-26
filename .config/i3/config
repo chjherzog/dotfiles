@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $windows Mod4
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -24,6 +26,9 @@ bar {
 for_window [class="^.*"] border pixel 2
 for_window [class="^.*"] client.focused  
 
+# swap capslock to esc
+exec --no-startup-id xmodmap ~/.Xmodmap
+
 bindsym $mod+m bar mode invisible
 bindsym $mod+Shift+s exec xrandr --output eDP --off
 bindsym $mod+Ctrl+s exec xrandr --output eDP --auto
@@ -36,7 +41,6 @@ exec --no-startup-id compton &
 
 # rofi
 bindsym $mod+space exec rofi -show combi
-
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -208,3 +212,12 @@ bindsym $mod+r mode "resize"
 
 # lockscreen
 bindsym Control+Mod1+l exec "i3lock -c 000000"
+
+
+exec --no-startup-id xinput set-prop "GXTP7863:00 27C6:01E0 Touchpad" "libinput Tapping Enabled" 0
+
+
+bindsym $windows+1 exec i3-msg set layout us
+bindsym $windows+2 exec i3-msg set layout de
+
+bindsym $mod+Shift+a exec --no-startup-id maim --select | xclip -selection clipboard -t image/png

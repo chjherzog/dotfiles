@@ -24,6 +24,7 @@ tztime local {
         format = "KW%V %d-%m-%Y %H:%M:%S"
 }
 
+
 memory {
         format = "RAM: %percentage_used %percentage_free"
 }
